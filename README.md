@@ -1,5 +1,5 @@
 # GoogleAppsScriptFileUpload
-Upload files to google Drive using Apps Script for web apps
+Web app file upload to Drive using Apps Script 
 
 Only can upload PDF's and JPEG's 
 
