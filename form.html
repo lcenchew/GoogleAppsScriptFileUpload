@@ -1,0 +1,56 @@
+<!doctype html>
+<style type="text/css">
+body {
+  background-color: #FFFFFF;
+}
+</style>
+<BR>
+  <BR>
+    <BR>
+      <div align="center">
+        <p><img src="https://cdn.pixabay.com/photo/2017/04/25/22/28/despaired-2261021_960_720.jpg" width="50%" height="50%"></p>
+        <table width="459" border="0">
+          <tbody>
+            <tr>
+              <td width="462"><div align="center">
+                <hr>
+              </div>
+              <form id="myForm" align="center">
+                <input type="text" name="myName" placeholder="NOM_Prenom">
+                <input type="file" name="myFile">
+                <input type="submit" value="Envoyer le fichier" onclick="upload()" >
+              </form>
+              <div id="output"></div>
+              <script>
+              function upload() {
+                var file = document.getElementsByName('myFile')[0].files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  var blob = reader.result;
+                  console.log('Sending ' + file.name);
+                  var currFolder = 'Google_Dropbox';
+                  
+                  //console.log(content.toString().split(","));
+                  google.script.run.withSuccessHandler(fileUploaded).uploadFiles(blob, file.name, file.type.toString());
+                  return false;
+                }
+                reader.readAsDataURL(file);
+              }
+              
+              function fileUploaded(status) {
+              var status = "hello"
+                document.getElementById('myForm').style.display = 'none';
+                document.getElementById('output').innerHTML = status;
+              }
+            </script>
+            <style>
+            input { display:block; margin: 20px; }
+            
+          </style>
+          <hr></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>&nbsp;</h3>
+    <p>&nbsp;</p>
+  </div>
